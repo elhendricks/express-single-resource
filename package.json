@@ -1,0 +1,34 @@
+{
+  "name": "express-single-resource",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test:run": "mocha",
+    "test": "npm run test:run",
+    "test:watch": "npm run test:run -- -w",
+    "lint": "eslint *.js",
+    "pretest": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elhendricks/express-single-resource.git"
+  },
+  "author": "Erica Hendricks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elhendricks/express-single-resource/issues"
+  },
+  "homepage": "https://github.com/elhendricks/express-single-resource#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta6",
+    "sander": "^0.5.1"
+  }
+}
