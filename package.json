@@ -7,7 +7,7 @@
     "test:run": "mocha",
     "test": "npm run test:run",
     "test:watch": "npm run test:run -- -w",
-    "lint": "eslint *.js",
+    "lint": "eslint **/*.js",
     "pretest": "npm run lint"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "mocha": "^3.1.2"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "pug": "^2.0.0-beta6",
     "sander": "^0.5.1"

@@ -47,11 +47,11 @@ describe('app.js', () => {
         request
         .post('/notes/my-notes')
         .set('Content-Type', 'application/json')
-        .send('{ noteBody: \'hello world\' }')
-        .end((err, res) => {
+        .send('{ "noteBody": "hello world" }')
+        .end(() => {
             sander.readFile('./notes/my-notes.txt')
             .then((data) => { 
-                assert.equal(data, '{ noteBody: \'hello world\' }');
+                assert.equal(data.toString(), '{"noteBody":"hello world"}');
             })
             .then( () => {
                 done();
@@ -59,15 +59,15 @@ describe('app.js', () => {
         });
     });
 
-    it('updates file after post request', done => {
+    it('updates file after put request', done => {
         request
-        .post('/notes/news')
+        .put('/notes/news')
         .set('Content-Type', 'application/json')
         .send('{ "freshness":"New News" }')
         .end(() => {
-            sander.readFile('./notes/my-notes.txt')
+            sander.readFile('./notes/news.txt')
             .then((data) => { 
-                assert.equal(data, '{ noteBody: \'hello world\' }');
+                assert.equal(data.toString(), '{"freshness":"New News"}');
             })
             .then( () => {
                 done();
@@ -84,7 +84,6 @@ describe('app.js', () => {
         .end(() => {
             sander.readdir('./notes/')
             .then(files => {
-                console.log('I got inside the test');
                 assert(files.indexOf('stuff.txt' === -1));
                 done();
             })
