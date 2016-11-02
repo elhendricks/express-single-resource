@@ -44,14 +44,15 @@ describe('app.js', () => {
     });
 
     it('makes a post request', done => {
+        var testData = '{ "noteBody":"hello world" }';
         request
         .post('/notes/my-notes')
         .set('Content-Type', 'application/json')
-        .send('{ "noteBody": "hello world" }')
+        .send(testData)
         .end(() => {
             sander.readFile('./notes/my-notes.txt')
             .then((data) => { 
-                assert.equal(data.toString(), '{"noteBody":"hello world"}');
+                assert.equal(data.toString(), testData);
             })
             .then( () => {
                 done();
