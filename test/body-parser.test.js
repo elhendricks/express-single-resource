@@ -9,7 +9,7 @@ describe('body-parser', () => {
         const req = new EventEmitter();
         const testData = '{"data": "very important data"}';
         const next = () => {
-            assert.equal(req.body, testData);
+            assert.deepEqual(req.body, JSON.parse(testData));
             done();
         };
 
@@ -22,9 +22,11 @@ describe('body-parser', () => {
 
     it('returns an error if there is invalid JSON', done => {
         const req = new EventEmitter();
-        const testData = 'not really JSON';
-        const next = () => {
-            done()
+        const testData = 'invalid json';
+        const next = (arg) => {
+
+            assert.equal(arg, 'invalid json');
+            done();
         };
 
         bodyParser(req, null, next);        
